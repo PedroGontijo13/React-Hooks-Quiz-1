@@ -36,16 +36,115 @@ In this case you would need to use setValue(value) to update the Value to value.
 The purpose of the useEffect hook is to allow side effects to be performed in a functional component.  It runs after every render and can be used to update the state, fetch data, or perform other operations based on changes in state or props.
 
 - What is the syntax for using useEffect in a functional component?
+
+useEffect(() => {
+  // Effect code here
+}, [dependencyArray]);
+
 - When does the callback function passed to useEffect get called?
+
+The callback function passed to useEffect gets called after the component has rendered or when a specific dependency has changed.
+
 - Can you use useEffect more than once in a single component?
+
+Yes
+
 - How do you unsubscribe from a subscription created in a useEffect hook?
+
+useEffect(() => {
+  const subscription = subscribeToData(data => {
+    // do something with the data
+  });
+
+  return () => {
+    // unsubscribe from the subscription
+    subscription.unsubscribe();
+  };
+}, [/* dependency array */]);
+
 - What is the difference between useEffect and componentDidMount in a class component?
+
+useEffect is a hook used in functional components to perform side effects and update state variables. It is equivalent to componentDidMount, 
+componentDidUpdate, and componentWillUnmount in a class component. The useEffect hook is called after every render cycle of the component, while 
+componentDidMount is only called once, after the initial rendering of the component.
+
 - What is the difference between useEffect and componentWillUnmount in a class component?
+
+useEffect is a hook used in functional components to perform side effects and update state variables. It is equivalent to componentDidMount, 
+componentDidUpdate, and componentWillUnmount in a class component. The useEffect hook is called after every render cycle of the component, while 
+componentWillUnmount is only called once, after the initial rendering of the component.
+
 - What is the difference between useEffect and componentDidUpdate in a class component?
+
+The main difference between useEffect and componentDidUpdate is that useEffect can handle multiple side effects and can be used to conditionally run 
+effects based on the state or props of the component, while componentDidUpdate is only called after a component has updated and can only handle one 
+specific side effect at a time.
+
 - How do you conditionally run the effect only when certain values change?
+
+useEffect(() => {
+  // effect code here
+}, [var1, var2]);
+The efect code will be re-run when var1 and var2 change
+
 - What is the second argument to useEffect used for?
+
+The second argument to useEffect is an array of dependencies. It is an optional parameter that allows us to specify values that the effect depends on.
+
 - How do you simulate componentDidMount with useEffect?
+
+You can simulate componentDidMount with useEffect by passing an empty dependency array as the second argument. 
+This ensures that the effect only runs once, when the component mounts, and not on any subsequent updates. Here's an example:
+
+useEffect(() => {
+  // Code to run on mount here
+}, []);
+
+
 - How do you simulate componentWillUnmount with useEffect?
+
+You can simulate the componentWillUnmount lifecycle method in a class component with the useEffect hook by returning a cleanup function from the effect.
+
+useEffect(() => {
+  // Effect code here
+
+  return () => {
+    // Cleanup code here
+  };
+}, []);
+
 - How do you simulate componentDidUpdate with useEffect?
+
+To simulate componentDidUpdate with useEffect, you can add a dependency array as the second argument to the useEffect function. 
+The dependency array contains the variables that should trigger the effect when they change.
+
+import { useState, useEffect } from 'react';
+
+function ExampleComponent(props) {
+  const [count, setCount] = useState(0);
+  
+  useEffect(() => {
+    // this will be triggered every time count changes
+    console.log(`count changed to ${count}`);
+  }, [count]);
+
+  function handleClick() {
+    setCount(count + 1);
+  }
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={handleClick}>Click me</button>
+    </div>
+  );
+}
+
 - Can you have side effects in the callback function passed to useState?
+
+value and does not have any side effects. To perform side effects in a functional component, you would use the useEffect hook instead.
+
 - Can you have state variables in the callback function passed to useEffect?
+
+No, you cannot have state variables in the callback function passed to useEffect. 
+This is because the callback function runs only once during the initial render and doesn't have access to the updated state values.

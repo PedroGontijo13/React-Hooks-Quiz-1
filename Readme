@@ -1,0 +1,51 @@
+- What is the purpose of the useState hook?
+
+The useState hook is used when we need to save some data from the page when the user interacts with the page.
+
+- What is the syntax for using useState in a functional component?
+
+The syntax for using useState in a functional component is:
+
+const [Value, setValue] = useState(0);
+
+Here, setValue is a function that can be used to update the state value and Value is the state value that can store some data in this case a number.
+0 is the initial value of the state.
+
+- What is the default value of a state variable initialized with useState?
+
+The default value of the state variable its gonna be the value that we pass into our "useState()" function.
+
+const [Value, setValue] = useState(0);
+
+in this case is 0.
+
+- Can you update multiple state variables with a single call to useState?
+
+No, the useState hook only update one state, if you want to update another ones you will neeed to use it multi times.
+
+- How do you update a state variable with useState?
+
+You will need to use the SetState() function:
+
+const [Value, setValue] = useState(0);
+
+In this case you would need to use setValue(value) to update the Value to value.
+
+- What is the purpose of the useEffect hook?
+
+The purpose of the useEffect hook is to allow side effects to be performed in a functional component.  It runs after every render and can be used to update the state, fetch data, or perform other operations based on changes in state or props.
+
+- What is the syntax for using useEffect in a functional component?
+- When does the callback function passed to useEffect get called?
+- Can you use useEffect more than once in a single component?
+- How do you unsubscribe from a subscription created in a useEffect hook?
+- What is the difference between useEffect and componentDidMount in a class component?
+- What is the difference between useEffect and componentWillUnmount in a class component?
+- What is the difference between useEffect and componentDidUpdate in a class component?
+- How do you conditionally run the effect only when certain values change?
+- What is the second argument to useEffect used for?
+- How do you simulate componentDidMount with useEffect?
+- How do you simulate componentWillUnmount with useEffect?
+- How do you simulate componentDidUpdate with useEffect?
+- Can you have side effects in the callback function passed to useState?
+- Can you have state variables in the callback function passed to useEffect?
